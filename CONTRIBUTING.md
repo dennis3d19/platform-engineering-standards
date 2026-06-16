@@ -30,7 +30,6 @@ By participating, you are expected to uphold this standard.
 - **Standards updates**: Propose changes to existing standards documents
 - **New standards**: Add standards for technologies not yet covered
 - **Templates**: Add or improve templates (ADR, PR, runbooks)
-- **Examples**: Add working examples for technologies or patterns
 - **Bug fixes**: Fix errors, broken links, or inaccurate information
 - **Documentation**: Improve clarity, add diagrams, fix typos
 
@@ -45,37 +44,9 @@ By participating, you are expected to uphold this standard.
 
 ## Development Setup
 
-### Prerequisites
-
-Install all required tools:
-
-```bash
-# Python tools
-pip install pre-commit yamllint detect-secrets
-
-# Node.js tools
-npm install -g markdownlint-cli
-
-# System tools (Ubuntu/Debian)
-apt-get install shellcheck
-
-# Go tools
-go install mvdan.cc/sh/v3/cmd/shfmt@latest
-```
-
-### Initial Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/dennis3d19/platform-engineering-standards.git
-cd platform-engineering-standards
-
-# Install pre-commit hooks
-make install
-
-# Verify setup
-make validate
-```
+1. Clone the repository.
+2. Review the relevant standards document before editing.
+3. Update the related markdown files in the same change so cross-references stay accurate.
 
 ---
 
@@ -94,31 +65,11 @@ make validate
 - Use lowercase hyphenated names for all files (`my-standard.md`)
 - Follow the naming conventions in [docs/standards/naming-conventions.md](docs/standards/naming-conventions.md)
 
-### YAML Files
-
-- Pass `yamllint` with the project configuration
-- Use 2-space indentation
-- Include a trailing newline
-
 ### Markdown Files
 
-- Pass `markdownlint` with the project configuration
 - Use ATX-style headings (`#`, `##`, `###`)
 - Include blank lines around headings and lists
 - Limit line length where practical
-
-### Shell Scripts
-
-- Pass `shellcheck`
-- Pass `shfmt` formatting
-- Use `#!/usr/bin/env bash` shebang
-- Use `set -euo pipefail`
-
-### Examples
-
-- All examples must work as-is with only environment-specific values replaced
-- Use placeholder values (`REPLACE_ME`, `<your-value>`, `example.com`)
-- Include a `README.md` in each example directory
 
 ---
 
@@ -126,10 +77,9 @@ make validate
 
 ### Before Opening a PR
 
-1. Run `make validate` and ensure all checks pass
-2. Update relevant documentation in the same PR
-3. Update `CHANGELOG.md` with your changes
-4. Complete the [PR checklist](docs/checklists/pr-checklist.md)
+1. Update relevant documentation in the same PR
+2. Update `CHANGELOG.md` with your changes
+3. Complete the [PR checklist](docs/checklists/pr-checklist.md)
 
 ### PR Title Format
 
@@ -143,10 +93,10 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 | Type | Use |
 |---|---|
-| `feat` | New standard, template, or example |
+| `feat` | New standard or template |
 | `fix` | Fix error, broken link, or incorrect standard |
 | `docs` | Documentation improvements |
-| `chore` | Maintenance, dependency updates |
+| `chore` | Repository maintenance |
 | `refactor` | Restructure without changing content |
 | `security` | Security-related fixes or improvements |
 
@@ -167,8 +117,7 @@ chore(pre-commit): update hook versions
 
 ### Review Requirements
 
-- At least one approval from a CODEOWNER is required
-- All CI checks must pass
+- At least one reviewer approval is required
 - All review comments must be resolved
 
 ---

@@ -17,7 +17,7 @@ We take security seriously. If you discover a security vulnerability in this rep
 
 ### How to Report
 
-1. **Email**: Send details to the repository maintainers via the contact information in [CODEOWNERS](CODEOWNERS).
+1. **Repository maintainers**: Contact the repository maintainers through the private channels configured for this repository.
 2. **GitHub Private Reporting**: Use [GitHub's private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)
    if enabled for this repository.
 
@@ -44,29 +44,19 @@ Please include as much of the following information as possible:
 
 This repository enforces the following security controls:
 
-### Pre-commit Hooks
+### Documentation Controls
 
-All commits are scanned for:
+All repository changes must:
 
-- Secrets and credentials (`detect-secrets`)
-- Security misconfigurations (`checkov`)
-- Shell vulnerabilities (`shellcheck`)
-
-### CI/CD Security Gates
-
-Every pull request triggers:
-
-- Static analysis and secret scanning
-- Dependency vulnerability checks
-- Infrastructure-as-code security scanning (Checkov)
-- Container image vulnerability scanning where applicable
+- Avoid committing credentials, tokens, API keys, or private keys
+- Keep security guidance aligned with the standards documents
+- Remove broken or stale references that could mislead operators
 
 ### Secrets Management
 
 - No credentials, tokens, API keys, or private keys are committed to this repository
-- All examples use placeholder values (e.g., `REPLACE_ME`, `<your-value>`)
-- Vault patterns are demonstrated without real paths or credentials
-- `.gitignore` and pre-commit hooks prevent accidental secret commits
+- Vault patterns are documented without real paths or credentials
+- Any sample identifiers must stay generic and non-sensitive
 
 ### Dependency Management
 
@@ -78,11 +68,10 @@ Every pull request triggers:
 
 When using the templates and standards in this repository in your own environment:
 
-1. **Rotate all credentials** before using any example configurations
-2. **Review RBAC permissions** — apply least-privilege appropriate for your context
-3. **Enable SSL verification** — examples may show `sslVerify: false` for test environments only; never use in production
-4. **Audit Vault policies** — example Vault policies are illustrative; review before production use
-5. **Pin image digests** — production workloads should pin container images to immutable digests
+1. **Review RBAC permissions** — apply least-privilege appropriate for your context
+2. **Enable SSL verification** — sample guidance may describe exceptions for test environments only; never use them in production
+3. **Audit Vault policies** — documented Vault patterns are illustrative and must be reviewed before production use
+4. **Pin image digests** — production workloads should pin container images to immutable digests
 
 ## Compliance
 

@@ -9,9 +9,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- Placeholder for next release changes
+- Aligned `docs/standards/engineering-standards.md` with the latest shared engineering standards text.
+- Simplified the repository to a documentation-only structure and removed references to deleted tooling files.
+
+### Removed
+
+- Removed the remaining tracked test documentation file.
+- Removed repository references that described deleted tests and examples as current content.
 
 ---
 

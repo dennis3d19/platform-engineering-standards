@@ -2,21 +2,17 @@
 
 > Enterprise standards, templates, governance, and best practices for Platform Engineering teams.
 
-[![Validate](https://github.com/dennis3d19/platform-engineering-standards/actions/workflows/validate.yml/badge.svg)](https://github.com/dennis3d19/platform-engineering-standards/actions/workflows/validate.yml)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
-
 ---
 
 ## Background
 
-This repository is a clean-room implementation built to demonstrate technologies, patterns, architecture, and automation used in professional environments.
+This repository is a clean-room documentation set built to capture platform engineering standards, governance, templates, and operating guidance.
 
 The original work was performed for employers and clients and cannot be published due to confidentiality and intellectual property restrictions.
 
 No client code, client data, internal documentation, or proprietary configurations are included.
 
-All examples, templates, and standards documented here are generic, technology-appropriate, and safe for public publication.
+All standards and supporting documents published here are generic, technology-appropriate, and safe for public publication.
 
 ---
 
@@ -31,12 +27,12 @@ This repository demonstrates the following professional Platform Engineering ski
 | **Helm Charting** | Chart structure, values management, environment splitting, and linting |
 | **Secrets Management** | Vault integration patterns, ExternalSecrets, rotation procedures |
 | **GitOps** | ArgoCD application patterns, sync policies, syncWave ordering |
-| **CI/CD Design** | GitHub Actions workflows, pipeline gates, artifact generation |
-| **Security Engineering** | RBAC, network policies, supply-chain controls, secret scanning |
+| **CI/CD Design** | Merge request gates, reproducible pipelines, and promotion controls |
+| **Security Engineering** | RBAC, network policies, supply-chain controls, secret handling |
 | **Observability** | Prometheus metrics, alerting rules, Grafana dashboards as code, structured logging |
-| **Developer Experience** | Pre-commit hooks, editor config, Makefile targets, onboarding guides |
+| **Developer Experience** | Onboarding guides, documentation workflows, and contribution guidance |
 | **Documentation** | ADR templates, runbooks, production readiness checklists |
-| **Governance** | Naming conventions, repository standards, CODEOWNERS, PR templates |
+| **Governance** | Naming conventions, repository standards, and review templates |
 | **Technical Writing** | Mermaid architecture diagrams, design decisions, trade-offs, failure scenarios |
 
 ---
@@ -50,9 +46,7 @@ platform-engineering-standards/
 │   │   ├── bug_report.md
 │   │   ├── feature_request.md
 │   │   └── incident.md
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows/
-│       └── validate.yml
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── docs/
 │   ├── adr/                          # Architecture Decision Records
 │   │   ├── README.md
@@ -78,26 +72,8 @@ platform-engineering-standards/
 │       ├── repository-structure-standards.md
 │       ├── terraform-standards.md
 │       └── vault-standards.md
-├── examples/
-│   ├── helm/
-│   │   └── app-chart/
-│   ├── kubernetes/
-│   │   └── namespace-setup/
-│   └── terraform/
-│       └── aws-vpc/
-├── tests/
-│   ├── README.md
-│   └── fixtures/
-├── .editorconfig
-├── .gitignore
-├── .markdownlint.yaml
-├── .pre-commit-config.yaml
-├── .yamllint.yaml
 ├── CHANGELOG.md
-├── CODEOWNERS
 ├── CONTRIBUTING.md
-├── LICENSE
-├── Makefile
 └── SECURITY.md
 ```
 
@@ -105,33 +81,9 @@ platform-engineering-standards/
 
 ## Quick Start
 
-### Prerequisites
-
-| Tool | Minimum Version | Install |
-|---|---|---|
-| `pre-commit` | 3.x | `pip install pre-commit` |
-| `yamllint` | 1.x | `pip install yamllint` |
-| `markdownlint-cli` | 0.39.x | `npm install -g markdownlint-cli` |
-| `shellcheck` | 0.9.x | `apt install shellcheck` |
-| `shfmt` | 3.x | `go install mvdan.cc/sh/v3/cmd/shfmt@latest` |
-| `detect-secrets` | 1.x | `pip install detect-secrets` |
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/dennis3d19/platform-engineering-standards.git
-cd platform-engineering-standards
-
-# Install pre-commit hooks
-make install
-
-# Run all validations
-make validate
-
-# Run linting only
-make lint
-```
+1. Start with [docs/standards/engineering-standards.md](docs/standards/engineering-standards.md) for the baseline rules.
+2. Review the technology-specific standards under [docs/standards/](docs/standards/).
+3. Use the templates and operational guides in `docs/adr/`, `docs/checklists/`, `docs/onboarding/`, and `docs/runbooks/`.
 
 ---
 
@@ -166,42 +118,9 @@ make lint
 
 ---
 
-## Architecture Overview
+## Usage
 
-```mermaid
-graph TB
-    subgraph "Developer Workflow"
-        DEV[Developer] --> PR[Pull Request]
-        PR --> PRECOMMIT[Pre-commit Hooks]
-        PRECOMMIT --> |lint/format/scan| CI[CI Pipeline]
-    end
-
-    subgraph "CI Pipeline - validate.yml"
-        CI --> LINT[Lint & Format]
-        CI --> SEC[Security Scan]
-        CI --> VAL[Schema Validation]
-        CI --> TEST[Tests]
-        LINT & SEC & VAL & TEST --> GATE[Quality Gate]
-    end
-
-    subgraph "GitOps - Promotion"
-        GATE --> |merge to main| ARGOCD[ArgoCD]
-        ARGOCD --> TST[tst environment]
-        TST --> |promote| ACC[acc environment]
-        ACC --> |promote| PRD[prd environment]
-    end
-
-    subgraph "Secrets"
-        VAULT[HashiCorp Vault] --> |ExternalSecret| K8S_SECRET[Kubernetes Secret]
-        K8S_SECRET --> POD[Pod]
-    end
-
-    subgraph "Observability"
-        POD --> PROM[Prometheus]
-        PROM --> GRAFANA[Grafana]
-        PROM --> ALERT[Alertmanager]
-    end
-```
+Use this repository as the source of truth for standards content. Copy, adapt, and apply the documented requirements in your own repositories and delivery workflows.
 
 ---
 
@@ -212,10 +131,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 ## Security
 
 See [SECURITY.md](SECURITY.md) for security policy and vulnerability reporting.
-
-## License
-
-This project is licensed under the Apache License 2.0 — see the [LICENSE](LICENSE) file for details.
 
 ## Changelog
 
