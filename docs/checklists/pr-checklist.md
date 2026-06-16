@@ -9,7 +9,6 @@ Use it alongside the [PR template](.github/PULL_REQUEST_TEMPLATE.md).
 
 - [ ] PR title follows Conventional Commits format
 - [ ] Related issue is linked (`Closes #N` or `Refs #N`)
-- [ ] `make validate` passes locally
 - [ ] `CHANGELOG.md` is updated under `[Unreleased]`
 - [ ] No secrets, credentials, or real data in any file
 - [ ] Self-reviewed the diff for obvious errors
@@ -18,9 +17,8 @@ Use it alongside the [PR template](.github/PULL_REQUEST_TEMPLATE.md).
 
 ## Documentation Changes
 
-- [ ] Markdown passes `markdownlint`
 - [ ] No broken links
-- [ ] Code examples in documentation are correct and tested
+- [ ] Code examples in documentation are correct
 - [ ] Mermaid diagrams render correctly
 - [ ] Placeholder values used (not real domains, IPs, or credentials)
 

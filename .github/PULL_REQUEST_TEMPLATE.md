@@ -26,9 +26,6 @@ Before requesting review, please verify the following. Check each item that appl
 
 ### Quality
 
-- [ ] `make validate` passes locally with no errors
-- [ ] `make lint` passes locally with no errors
-- [ ] All pre-commit hooks pass
 - [ ] No secrets, credentials, or sensitive data included
 - [ ] No real client names, domains, or IP addresses included
 - [ ] No `TODO`, `FIXME`, or `HACK` comments without a linked issue
@@ -38,10 +35,8 @@ Before requesting review, please verify the following. Check each item that appl
 ### Standards Compliance
 
 - [ ] File names follow the naming conventions (lowercase-hyphenated)
-- [ ] YAML files use 2-space indentation
 - [ ] Markdown headings use ATX style (`#`, `##`, `###`)
-- [ ] Shell scripts use `#!/usr/bin/env bash` and `set -euo pipefail`
-- [ ] Examples use placeholder values, not real configuration
+- [ ] Examples in documentation use placeholder values, not real configuration
 
 ---
 
@@ -55,12 +50,11 @@ Before requesting review, please verify the following. Check each item that appl
 
 ---
 
-### Examples and Tests
+### Optional Technical Validation
 
-- [ ] If a new example is added, it includes a `README.md`
-- [ ] Example YAML files pass `yamllint`
-- [ ] Kubernetes manifests pass `kubeconform`
-- [ ] Terraform examples pass `terraform fmt` and `terraform validate`
+- [ ] If this PR adds runnable examples, they include the required documentation
+- [ ] If this PR changes Kubernetes manifests, they were validated appropriately
+- [ ] If this PR changes Terraform, formatting and validation were run
 
 ---
 
@@ -77,10 +71,10 @@ Before requesting review, please verify the following. Check each item that appl
 Select the type of change:
 
 - [ ] 📄 Documentation (new or updated standard/guide)
-- [ ] ✨ New feature (new template, example, or standard)
+- [ ] ✨ New feature (new template or standard)
 - [ ] 🐛 Bug fix (incorrect information, broken link)
 - [ ] 🔒 Security fix
-- [ ] 🔧 Maintenance (dependency updates, tooling)
+- [ ] 🔧 Maintenance (repository housekeeping)
 - [ ] ♻️ Refactor (structure change without content change)
 
 ---

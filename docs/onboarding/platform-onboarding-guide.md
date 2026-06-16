@@ -61,7 +61,6 @@ pre-commit --version
 # Platform engineering standards (this repo)
 git clone https://github.com/example/platform-engineering-standards.git
 cd platform-engineering-standards
-make install
 
 # Platform infrastructure (if applicable)
 git clone https://github.com/example/platform-infrastructure.git
@@ -149,13 +148,11 @@ graph TB
 
 ## Week 1: First Contribution
 
-### 3.1 Set Up Pre-commit
+### 3.1 Review the Standards Repository
 
 ```bash
 cd platform-engineering-standards
-make install
-# Verify hooks are installed
-pre-commit run --all-files
+ls docs/standards
 ```
 
 ### 3.2 Make Your First PR
@@ -164,16 +161,16 @@ A good first PR is a documentation improvement or fixing a typo.
 
 1. Create a branch: `git checkout -b docs/update-onboarding-guide`
 2. Make your change.
-3. Run `make validate`.
+3. Review the updated markdown for accuracy and broken links.
 4. Commit with Conventional Commits: `git commit -m "docs(onboarding): add tool version requirements"`
 5. Open a PR.
 
 ### 3.3 Review Process
 
 - Assign yourself as the PR author.
-- Request review from a team member in CODEOWNERS.
+- Request review from a team member familiar with the affected standards.
 - Address all review comments before merging.
-- Wait for CI to pass before requesting a final review.
+- Ensure the repository documentation stays internally consistent before requesting a final review.
 
 ---
 
