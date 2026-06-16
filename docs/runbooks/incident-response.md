@@ -21,7 +21,7 @@ Use this runbook as the starting point for any platform incident. Adapt steps ba
 2. **Assess severity**: Classify using the table above. When in doubt, escalate to a higher severity.
 3. **Declare**: Post in the incident Slack channel:
    ```
-   🚨 INCIDENT DECLARED: [SEV1/2/3] - <brief description>
+   INCIDENT DECLARED: [SEV1/2/3] - <brief description>
    IC: @your-name
    Status: Investigating
    Bridge: <call link>
@@ -126,7 +126,7 @@ kubectl label pod <pod-name> app=<app>-isolated --overwrite -n <namespace>
 1. **Confirm resolution**: Verify error rates, latency, and alerts return to normal.
 2. **Announce resolution**:
    ```
-   ✅ INCIDENT RESOLVED: [SEV] - <brief description>
+   INCIDENT RESOLVED: [SEV] - <brief description>
    Duration: <start> to <end> (<duration>)
    Root cause: <brief description>
    Post-mortem: <link to issue>

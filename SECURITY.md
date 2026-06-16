@@ -6,8 +6,8 @@ This repository contains standards, templates, and documentation. The following 
 
 | Version | Supported |
 | ------- | --------- |
-| main    | ✅ Yes    |
-| < main  | ❌ No     |
+| main    | Yes    |
+| < main  | No     |
 
 ## Reporting a Vulnerability
 

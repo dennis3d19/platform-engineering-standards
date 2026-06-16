@@ -70,12 +70,12 @@ Before requesting review, please verify the following. Check each item that appl
 
 Select the type of change:
 
-- [ ] 📄 Documentation (new or updated standard/guide)
-- [ ] ✨ New feature (new template or standard)
-- [ ] 🐛 Bug fix (incorrect information, broken link)
-- [ ] 🔒 Security fix
-- [ ] 🔧 Maintenance (repository housekeeping)
-- [ ] ♻️ Refactor (structure change without content change)
+- [ ] Documentation (new or updated standard/guide)
+- [ ] New feature (new template or standard)
+- [ ] Bug fix (incorrect information, broken link)
+- [ ] Security fix
+- [ ] Maintenance (repository housekeeping)
+- [ ] Refactor (structure change without content change)
 
 ---
 
