@@ -133,14 +133,18 @@ class TestGitHubWorkflow:
         assert workflow.exists(), "validate.yml workflow is missing"
 
     def test_validate_workflow_parseable(self):
-        """The validate.yml workflow must be valid YAML."""
+        """The validate.yml workflow must be valid YAML with required sections."""
         workflow = REPO_ROOT / ".github" / "workflows" / "validate.yml"
         with open(workflow) as f:
             content = yaml.safe_load(f)
         assert content is not None
         assert "jobs" in content, "workflow must have jobs"
-        # YAML parses 'on' as boolean True — check for either form
-        assert "on" in content or True in content, "workflow must have triggers"
+        # GitHub Actions 'on:' is parsed as boolean True by PyYAML safe_load.
+        # We check for the boolean True key (from 'on:') explicitly.
+        has_trigger = True in content  # PyYAML parses 'on' keyword as boolean True
+        assert has_trigger, (
+            "workflow must have an 'on:' trigger (PyYAML parses 'on' as boolean True)"
+        )
 
 
 class TestReadme:
@@ -161,12 +165,22 @@ class TestReadme:
         )
 
     def test_readme_no_real_credentials(self):
-        """README must not contain credential patterns."""
+        """README must not contain common credential patterns."""
         readme = REPO_ROOT / "README.md"
         content = readme.read_text().lower()
-        forbidden = ["******secret=", "api_key=", "token=abc"]
-        for pattern in forbidden:
-            assert pattern not in content, f"README contains potential credential: {pattern}"
+        # Check for patterns that indicate real credentials are embedded
+        forbidden_patterns = [
+            "******api_key=",
+            "api-key:",
+            "token:",
+            "secret_key=",
+            "access_key=",
+            "private_key",
+        ]
+        violations = [p for p in forbidden_patterns if p in content]
+        assert not violations, (
+            f"README may contain credential patterns: {violations}"
+        )
 
 
 class TestExamples:
